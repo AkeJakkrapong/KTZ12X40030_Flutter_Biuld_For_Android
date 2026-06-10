@@ -1,0 +1,15 @@
+name: ktz12x40030_for_android
+description: KTZ12X40030 CAN bus monitor for Android via USB OTG
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  usb_serial: ^0.5.1
+
+flutter:
+  uses-material-design: true
