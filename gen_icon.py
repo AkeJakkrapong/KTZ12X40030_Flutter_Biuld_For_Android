@@ -9,7 +9,7 @@ SIZES = {
     'mipmap-xxxhdpi': 192,
 }
 
-SRC_ICON = os.path.join(os.path.dirname(__file__), 'icon.png')
+SRC_ICON = os.path.join(os.path.dirname(__file__), 'icon2.png')
 BASE_DIR = os.path.join(os.path.dirname(__file__), 'android', 'app', 'src', 'main', 'res')
 
 src = Image.open(SRC_ICON).convert('RGBA')
