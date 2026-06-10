@@ -138,5 +138,4 @@ Regenerate by running `gen_icon.py` (requires Pillow: `pip install Pillow`).
 
 | Remote | URL |
 |--------|-----|
-| `origin` | https://github.com/AkeJakkrapong/KTZ12X40030_Python_Biuld_For_Android.git |
-| `flutter` | https://github.com/AkeJakkrapong/KTZ12X40030_Flutter_Biuld_For_Android.git |
+| `origin` | https://github.com/AkeJakkrapong/KTZ12X40030_Flutter_Biuld_For_Android.git |
