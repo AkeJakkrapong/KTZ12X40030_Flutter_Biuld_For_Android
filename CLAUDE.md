@@ -4,19 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 ## Building and running
 
+> **IMPORTANT:** Always use the **PowerShell tool** (not Bash) for Flutter commands on this machine. The Bash tool resolves Flutter from the macOS Homebrew path (`/opt/homebrew/share/flutter`) which doesn't exist on Windows, causing build failures.
+
 ```powershell
 # One-time setup (requires Flutter installed)
 flutter pub get
+
+# Before each build: stop Google Drive and clean build dir to avoid file locking
+taskkill /IM "GoogleDriveFS.exe" /F
+Remove-Item -Recurse -Force build
 
 # Build release APK
 flutter build apk --release --android-skip-build-dependency-validation
 
 # Install on connected Android device (Windows — adb in LOCALAPPDATA)
-& "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" install -r build\app\outputs\flutter-apk\app-release.apk
+& "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" install -r "build\app\outputs\flutter-apk\app-release.apk"
 
-# Before each build: stop Google Drive and clean build dir to avoid file locking
-taskkill /IM "GoogleDriveFS.exe" /F
-Remove-Item -Recurse -Force build
+# If install fails with INSTALL_FAILED_UPDATE_INCOMPATIBLE (signature mismatch), uninstall first:
+& "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" uninstall com.bhl.ktz12x40030
+& "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" install "build\app\outputs\flutter-apk\app-release.apk"
 ```
 
 > **Windows build tip:** Google Drive and Windows Defender both lock DEX files during compilation.
@@ -126,11 +132,11 @@ const _cOff    = Color(0xFF1A1A1A);  // inactive
 Icons live in `android/app/src/main/res/mipmap-*/ic_launcher.png`.  
 Regenerate by running `gen_icon.py` (requires Pillow: `pip install Pillow`).
 
-**Current design:** carbon black background, champagne gold rounded-rectangle border, white "aCAN" text centered in Georgia Bold.
+**Current source:** `icon2.png` (set in `gen_icon.py` `SRC_ICON`).
 
-```python
-BG_COL     = (10, 10, 10)    # carbon black
-BORDER_COL = (201, 162, 39)  # champagne gold
-TEXT_COL   = (255, 255, 255) # pure white
-FONT_PATH  = 'C:/Windows/Fonts/georgiab.ttf'  # Georgia Bold
-```
+## Git remotes
+
+| Remote | URL |
+|--------|-----|
+| `origin` | https://github.com/AkeJakkrapong/KTZ12X40030_Python_Biuld_For_Android.git |
+| `flutter` | https://github.com/AkeJakkrapong/KTZ12X40030_Flutter_Biuld_For_Android.git |
