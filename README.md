@@ -5,6 +5,14 @@ Built with Flutter. Supports CANable (SLCAN), Robotell, Waveshare USB-CAN adapte
 
 ---
 
+## Screenshots
+
+| | |
+|---|---|
+| ![Screenshot 1](Screenshot1.jpg) | ![Screenshot 2](screenshot2.jpg) |
+
+---
+
 ## Features
 
 - Real-time display of voltage, current, speed, shaft RPM, gear, and fault code
@@ -94,3 +102,13 @@ android/app/src/main/kotlin/com/bhl/ktz12x40030/
 ## Package
 
 `com.bhl.ktz12x40030`
+
+## Google Play Store
+
+Store listing assets live in the repo root:
+
+- `play_icon_512.png` — 512×512 app icon
+- `play_feature_graphic.png` — feature graphic
+- `Screenshot1.jpg`, `screenshot2.jpg` — phone screenshots
+
+Privacy policy: [`docs/privacy-policy.html`](docs/privacy-policy.html)
