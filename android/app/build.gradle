@@ -4,6 +4,12 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+def keyPropertiesFile = rootProject.file("key.properties")
+def keyProperties = new Properties()
+if (keyPropertiesFile.exists()) {
+    keyProperties.load(new FileInputStream(keyPropertiesFile))
+}
+
 android {
     namespace "com.bhl.ktz12x40030"
     compileSdk flutter.compileSdkVersion
@@ -30,9 +36,18 @@ android {
         versionName flutter.versionName
     }
 
+    signingConfigs {
+        release {
+            keyAlias keyProperties['keyAlias']
+            keyPassword keyProperties['keyPassword']
+            storeFile keyProperties['storeFile'] ? file(keyProperties['storeFile']) : null
+            storePassword keyProperties['storePassword']
+        }
+    }
+
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
